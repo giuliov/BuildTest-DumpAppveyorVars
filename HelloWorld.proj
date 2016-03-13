@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <Target Name="Build">
-    <Message Text="Hello, World!" />
+    <Message Text="Hello, World! We are building version $(BuildVersion)" />
   </Target>
 
 </Project>

@@ -5,6 +5,6 @@ environment:
   installerVersion: 2.1.$(APPVEYOR_BUILD_NUMBER)
   pippo: Pluto
 before_build:
-  - msbuild HelloWorld.proj /v:diag /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - msbuild HelloWorld.proj /p:BuildVersion=%installerVersion% /v:diag /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 build:
-  project: HelloWorld.proj /p:BuildVersion=%installerVersion%
+  project: HelloWorld.proj
