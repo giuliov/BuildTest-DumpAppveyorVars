@@ -2,8 +2,9 @@ version: 2.1.{build}-{branch}
 os:
   - Visual Studio 2015
 environment:
+  installerVersion: 2.1.{build}
   pippo: Pluto
 before_build:
   - msbuild HelloWorld.proj /v:diag /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 build:
-  project: HelloWorld.proj
+  project: HelloWorld.proj /p:BuildVersion=%installerVersion%
