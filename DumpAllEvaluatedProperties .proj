@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <UsingTask TaskName="DumpAllEvaluatedProperties" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <ProjectFilePath Required="true" />
+    </ParameterGroup>  
+    <Task>
+      <Reference Include="$(MSBuildBinPath)\Microsoft.Build.dll" />
+      <Reference Include="$(FrameworkDir)$(FrameworkVersion)\System.XML.dll" />
+      <Using Namespace="Microsoft.Build.Evaluation" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+
+        var project = new Project(this.ProjectFilePath); // add reference to Microsoft.Build.dll to compile
+
+        Log.LogMessage("Dumping Properties");
+        foreach (var property in project.AllEvaluatedProperties)
+        {
+            Log.LogMessage(" {0}={1}", property.Name, property.EvaluatedValue);
+        }
+ 
+        foreach (var item in project.AllEvaluatedItems)
+        {
+            Log.LogMessage(" {0}: {1}", item.ItemType, item.EvaluatedInclude);
+        }
+        
+      ]]></Code>
+    </Task>
+
+  </UsingTask>
+
+  <Target Name="Build">
+    <DumpAllEvaluatedProperties ProjectFilePath="$(MSBuildProjectFullPath)" />
+  </Target>
+
+</Project>
