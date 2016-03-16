@@ -7,7 +7,7 @@
     </ParameterGroup>  
     <Task>
       <Reference Include="$(MSBuildBinPath)\Microsoft.Build.dll" />
-      <Reference Include="$(FrameworkDir)$(FrameworkVersion)\System.XML.dll" />
+      <Reference Include="$(MSBuildFrameworkToolsPath)\System.XML.dll" />
       <Using Namespace="Microsoft.Build.Evaluation" />
       <Code Type="Fragment" Language="cs"><![CDATA[
 

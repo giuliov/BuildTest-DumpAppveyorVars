@@ -7,4 +7,4 @@ environment:
 #before_build:
 #  - msbuild HelloWorld.proj /p:BuildVersion=%installerVersion% /v:diag /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 build:
-  project: DumpAllEvaluatedProperties .proj
+  project: DumpAllEvaluatedProperties.proj
